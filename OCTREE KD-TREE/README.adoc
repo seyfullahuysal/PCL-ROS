@@ -1,0 +1,155 @@
+17.07.2017
+
+
+== PCL Kütüphanesi Octree Kodunun Çalıştırılması
+
+Daha önceden anlatıldığı gibi PCL kütüphanesi kurulduktan sonra bir octree kodunun çalıştırılması için aşağıdaki işlemler yapılmalıdır.
+
+* Herhangibir klasörde bir diziinoluşturarak bu dizine gidiyoruz.
+* Burada build adında bir klasörü aşağıdaki gibi oluşturuyoruz.
+
+[source,]
+----
+mkdir build
+----
+
+* Daha sonra oluşturulan klasörün içine cloud_viewer.cpp CMakeLists.txt ve https://sourceforge.net/projects/pointclouds/files/PCD%20datasets/[Bu linkteki] örnek pcd uzantılı pcl dataseti indirilerek atıyoruz.
+
+CMakeLists.txt’nin içeriği  
+
+[source,java]
+----
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+
+project(cloud_viewer)
+
+find_package(PCL 1.2 REQUIRED)
+
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable (cloud_viewer cloud_viewer.cpp)
+target_link_libraries (cloud_viewer ${PCL_LIBRARIES})
+----
+
+cloud_viewer.cpp dosyasının içeriği  
+[source,java]
+----
+#include <pcl/visualization/cloud_viewer.h>
+#include 
+#include <pcl/io/io.h>
+#include <pcl/io/pcd_io.h>
+/////////////////////
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+#include <pcl/io/openni_grabber.h>
+#include <pcl/visualization/cloud_viewer.h>
+
+#include <pcl/compression/octree_pointcloud_compression.h>
+#include <stdio.h>
+#include <sstream>
+#include <stdlib.h>
+
+#include <pcl/octree/octree.h>
+#include <vector>
+#include <ctime>
+
+using namespace std;
+int user_data;
+
+void viewerOneOff (pcl::visualization::PCLVisualizer& viewer)
+{
+    viewer.setBackgroundColor (1.0, 0.5, 1.0);
+    pcl::PointXYZ o;
+    o.x = 1.0;
+    o.y = 0;
+    o.z = 0;
+    viewer.addSphere (o, 0.25, "sphere", 0);
+    std::cout << "i only run once" << std::endl;
+
+}
+
+void viewerPsycho (pcl::visualization::PCLVisualizer& viewer)
+{
+    static unsigned count = 0;
+    std::stringstream ss;
+    ss << "Once per viewer loop: " << count++;
+    viewer.removeShape ("text", 0);
+    viewer.addText (ss.str(), 200, 300, "text", 0);
+
+    //FIXME: possible race condition here:
+    user_data++;
+}
+
+int
+main ()
+{
+
+    bool showStatistics = true;
+    pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA>* PointCloudEncoder;
+    pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA>* PointCloudDecoder;
+
+    pcl::io::compression_Profiles_e compressionProfile = pcl::io::LOW_RES_OFFLINE_COMPRESSION_WITH_COLOR;
+
+    // instantiate point cloud compression for encoding and decoding
+    PointCloudEncoder = new pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA> (compressionProfile, showStatistics);
+    PointCloudDecoder = new pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA> ();
+
+    pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGBA>);
+    pcl::io::loadPCDFile ("/home/yapbenzet/Documents/Untitled Folder/samp23-utm-ground.pcd", *cloud);
+
+    pcl::visualization::CloudViewer viewer("Cloud Viewer");
+
+      std::stringstream compressedData;
+
+      pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloudOut (new pcl::PointCloud<pcl::PointXYZRGBA> ());
+
+// datayı sıkıştırmak için kullanılıyor.
+      PointCloudEncoder->encodePointCloud (cloud, compressedData);
+
+      PointCloudDecoder->decodePointCloud (compressedData, cloudOut);
+
+// Octree için aşağıdaki yorum satırlarını aktif edip yukarıdaki 2 satırı yorum satırı yapmalıyız.
+
+ /*float resolution = 128.0f;
+
+ 	 pcl::octree::OctreePointCloudSearch<pcl::PointXYZRGBA> octree (resolution);
+
+ 	 octree.setInputCloud (cloud);
+ 	 octree.addPointsFromInputCloud ();*/
+
+viewer.showCloud (cloud);
+
+    viewer.runOnVisualizationThreadOnce (viewerOneOff);
+
+    viewer.runOnVisualizationThread (viewerPsycho);
+    while (!viewer.wasStopped ())
+    {
+    	user_data++;
+    }
+    return 0;
+}
+----
+
+cmake ve make işlemlerini yapıyoruz.
+[source,]
+----
+cmake ..
+make
+----
+Son olarak oluşturulan görünüm dosyasını çalıştırıyoruz ve aşağıdaki gibi bir çıktı elde ediyoruz.
+[source,]
+----
+./cloud_viewer
+----
+
+image::octree.png[]
+
+
+
+
+
+
+
+

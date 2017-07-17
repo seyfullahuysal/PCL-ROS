@@ -1,0 +1,3 @@
+/home/s/Masaüstü/Staj/octree/build/CMakeFiles/rebuild_cache.dir
+/home/s/Masaüstü/Staj/octree/build/CMakeFiles/edit_cache.dir
+/home/s/Masaüstü/Staj/octree/build/CMakeFiles/cloud_viewer.dir
