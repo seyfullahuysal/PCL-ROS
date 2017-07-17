@@ -1,0 +1,256 @@
+17.07.2017
+
+== Ubuntu 16.04 Üzerine ROS Kinetic Kurulumu
+
+* Ros Kinetic kurulumu için gerekli olan depoları sources.list dosyamıza ekliyoruz.
+
+
+----
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+----
+
+
+
+* Gerekli olan Keyi ekliyoruz
+
+----
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+----
+
+* Paket listemizi ve keyleri ekledikten sonra paket indeksimizi güncelliyoruz.
+
+
+----
+sudo apt-get update
+----
+
+* Güncelleme işleminden sonra aşağıdaki ros paketini yüklüyoruz.
+
+**Desktop-Full Install: (Recommended)**&nbsp;:
+ROS,&nbsp;http://wiki.ros.org/rqt[rqt],&nbsp;http://wiki.ros.org/rviz[rviz],
+robot-generic libraries, 2D/3D simulators, navigation and 2D/3D
+perception.
+
+----
+sudo apt-get install ros-kinetic-desktop-full
+----
+
+* Mevcut kurulu olan ros paketlerini görüntülemek için aşağıdaki
+kod kullanılabilir.
+
+----
+apt-cache search ros-kinetic
+----
+
+* ROS'u kullanabilmeniz için önce rosdep'i başlatmanız gerekir. Rosdep, derlemek istediğiniz kaynak için sistem bağımlılıklarını kolayca yüklemenizi sağlar ve ROS'ta bazı temel bileşenleri çalıştırmak için gereklidir. Rosdepi başlatmak için:
+
+----
+sudo rosdep init
+
+rosdep update
+----
+
+
+* Yeni bir kabuk başlattığımızda ROS ortam değişkenlerini otomatik olarak eklemek için aşağıdaki kod girilebilir:
+
+
+----
+sudo apt-get install python-rosinstall
+----
+
+
+* ROS için tanımlamamız gereken ortam değişkenleri vardır bunlar için aşağıdaki kodları .bashrc dosyasına ekleyeceğiz. ( user yazan kısımlara kendi kullanıcı adınızı giriniz.)
+
+----
+export ROS_ROOT=/home/user/ros/ros
+export PATH=$ROS_ROOT/bin:$PATH
+export PYTHONPATH=$PYTHONPATH:$ROS_ROOT/core/roslib/src
+export ROS_PACKAGE_PATH=/home/user/ros/ros-pkg:/another/path
+----
+
+* yukarıdaki kodları .bashrc dosyasına ekleyeceğiz. Aşağıdaki kod ile bashrc dosyasını açalım ve en sonuna ekleyelim.
+
+----
+cd ~
+gedit .bashrc
+----
+
+Bu işlemden sonra Ros kurulumumuz tamamlanmıştır.
+
+
+
+== Ubuntu 16.04 Üzerine Point Cloud Library (PCL) 1.8.0 Yüklenmesi
+
+PCL yükelemsini egerçekleştirmek için
+https://www.dropbox.com/s/9llzm20pc4opdn9/PCL-1.8.0-Linux.deb?dl=0[bu] linkten PCL'in 1.8.0 sürümünü bilgisayarımıza indiriyoruz.
+
+Kurulumu yapmak için aşağıdaki kouma giderek şu komutu işletiyoruz.
+
+----
+
+Sudo dpkg -i PCL-1.8.0-Linux.deb
+  
+----
+
+Buna alternatif olarak bu linki hiç kullanmadan PCL depolarını ekleyerekte kurulum işlemini yapabiliriz. Bunun için sırasıyla şu komutları girelim.
+
+
+----
+
+sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+sudo apt-get update
+sudo apt-get install libpcl-all
+
+----
+
+Yazılım geliştirmeyi Ubuntu'da hazırlamak için bazı önkoşul araçlarını kurmamız gerekiyor. Aşağıdaki komutları sırayla girelim.
+
+
+----
+     sudo apt-get update
+     sudo apt-get install git build-essential linux-libc-dev
+     sudo apt-get install cmake cmake-gui 
+     sudo apt-get install libusb-1.0-0-dev libusb-dev libudev-dev
+     sudo apt-get install mpi-default-dev openmpi-bin openmpi-common  
+     sudo apt-get install libflann1.8 libflann-dev
+     sudo apt-get install libeigen3-dev
+     sudo apt-get install libboost-all-dev
+     sudo apt-get install libvtk5.10-qt4 libvtk5.10 libvtk5-dev
+     sudo apt-get install libqhull* libgtest-dev
+     sudo apt-get install freeglut3-dev pkg-config
+     sudo apt-get install libxmu-dev libxi-dev 
+     sudo apt-get install mono-complete
+     sudo apt-get install qt-sdk openjdk-8-jdk openjdk-8-jre
+----
+
+Nokta kümesi kitaplığını aşağıdaki gibi alalım:
+
+----
+     git clone https://github.com/PointCloudLibrary/pcl.git
+
+----
+
+alınan dosyanın bulunduğu yola giderek make işlemini yapalım:
+
+
+----
+     cd pcl
+     mkdir release
+     cd release
+     cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr \
+           -DBUILD_GPU=ON -DBUILD_apps=ON -DBUILD_examples=ON \
+           -DCMAKE_INSTALL_PREFIX=/usr ..
+     make
+----
+
+Bu işlem biraz zaman alacaktır...
+daha sonra şu komutu vererek kurulum işlemini tamamlayalım.
+
+----
+     sudo make install
+----
+
+== Eigen Yüklemesi
+Eigen Yüklemesini gerçekleştirmek için http://eigen.tuxfamily.org/index.php?title=Main_Page[Bu] linkten istenilen sürümü indirdikten sonra 
+çıkarmamız yeterkidir.
+
+=== Eigen kütüphanesi kullanılan bir kodun derlenmesi
+
+----
+
+#include <iostream>
+#include <Eigen/Dense>
+using Eigen::MatrixXd;
+int main()
+{
+  MatrixXd m(2,2);
+  m(0,0) = 3;
+  m(1,0) = 2.5;
+  m(0,1) = -1;
+  m(1,1) = m(1,0) + m(0,1);
+  std::cout << m << std::endl;
+}
+  
+----
+
+Yukarıda verilen bir kodu linuxta derlemek için aşağıdaki komutu kullanmanız yeterlidir.
+
+
+[source,]
+----
+g++  -I/usr/include/eigen3 deneme.cpp -o sonuc
+----
+Bundan sonra oluşturulan çıktı çalıştırılırsa şöyle bir sonuç alınır:
+
+    3  -1
+  2.5 1.5
+
+
+== C++ 17 Standardına Göre Derleme İşlemi
+
+Bir kodu C++ 17 standardına göre derlemek için aşağıda argümanı kullanmamız gerekir.
+
+[source,]
+----
+-std=c++1z
+----
+
+
+Örneğin eigen için kullandığımız kodu c++ 17 ile derlemek için aşağıdaki gibi bir söz dizimi kullanabiliriz.
+
+[source,]
+----
+g++ -std=c++1z -I/usr/include/eigen3 deneme.cpp -o sonuc
+----
+
+Aşağıdaki tabloda C++ 17 Dil özelliklerini destekleyen gcc sürümleri listelenmiştir.
+
+
+
+|====
+| Language Feature | Proposal | Available in GCC? | SD-6 Feature Test
+| Removing trigraphs | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4086.html[N4086] | 5.1 | 
+| ``u8`` character literals | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4267.html[N4267] | 6 | __cpp_unicode_characters >= 201411
+| Folding expressions | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html[N4295] | 6 | __cpp_fold_expressions >= 201411
+| Attributes for namespaces and enumerators | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html[N4266] | 4.9 (namespaces)   
+6 (enumerators) | __cpp_namespace_attributes >= 201411   
+__cpp_enumerator_attributes >= 201411
+| Nested namespace definitions | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4230.html[N4230] | 6 | __cpp_nested_namespace_definitions >= 201411
+| Allow constant evaluation for all non-type template arguments | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html[N4268] | 6 | __cpp_nontype_template_args >= 201411
+| Extending static_assert | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3928.pdf[N3928] | 6 | __cpp_static_assert >= 201411
+| New Rules for auto deduction from braced-init-list | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html[N3922] | 5 | 
+| Allow typename in a template template parameter | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4051.html[N4051] | 5 | 
+| [[fallthrough]] attribute | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0188r1.pdf[P0188R1] | 7 | __has_cpp_attribute(fallthrough)
+| [[nodiscard]] attribute | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0189r1.pdf[P0189R1] | 4.8 ([[gnu::warn_unused_result]])  
+7 (P0189R1) | __has_cpp_attribute(nodiscard)
+| [[maybe_unused]] attribute | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0212r1.pdf[P0212R1] | 4.8 ([[gnu::unused]])  
+7 (P0212R1) | __has_cpp_attribute(maybe_unused)
+| Extension to aggregate initialization | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html[P0017R1] | 7 | __cpp_aggregate_bases >= 201603
+| Wording for ``constexpr`` lambda | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0170r1.pdf[P0170R1] | 7 | __cpp_constexpr >= 201603
+| Unary Folds and Empty Parameter Packs | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0036r0.pdf[P0036R0] | 6 | __cpp_fold_expressions >= 201603
+| Generalizing the Range-Based For Loop | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0184r0.html[P0184R0] | 6 | __cpp_range_based_for >= 201603
+| Lambda capture of ``*this`` by Value | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html[P0018R3] | 7 | __cpp_capture_star_this >= 201603
+| Construction Rules for ``enum class`` variables | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0138r2.pdf[P0138R2] | 7 | 
+| Hexadecimal floating literals for C++ | http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0245r1.html[P0245R1] | 3.0 | __cpp_hex_float >= 201603
+| Dynamic memory allocation for over-aligned data | http://wg21.link/p0035[P0035R4] | 7 | __cpp_aligned_new >= 201606
+| Guaranteed copy elision | http://wg21.link/p0135[P0135R1] | 7 | 
+| Refining Expression Evaluation Order for Idiomatic C++ | http://wg21.link/p0145[P0145R3] | 7 | 
+| constexpr if | http://wg21.link/p0292[P0292R2] | 7 | __cpp_if_constexpr >= 201606
+| Selection statements with initializer | http://wg21.link/p0305[P0305R1] | 7 | 
+| Template argument deduction for class templates | http://wg21.link/p0091[P0091R3] | 7 | __cpp_deduction_guides >= 201606
+| Declaring non-type template parameters with auto | http://wg21.link/p0127[P0127R2] | 7 | __cpp_template_auto >= 201606
+| Using attribute namespaces without repetition | http://wg21.link/p0028[P0028R4] | 7 | 
+| Ignoring unsupported non-standard attributes | http://wg21.link/p0283[P0283R2] | Yes | 
+| Structured bindings | http://wg21.link/p0217[P0217R3] | 7 | __cpp_structured_bindings >= 201606
+| Remove Deprecated Use of the register Keyword | http://wg21.link/p0001[P0001R1] | 7 | 
+| Remove Deprecated operator++(bool) | http://wg21.link/p0002[P0002R1] | 7 | 
+| Make exception specifications be part of the type system | http://wg21.link/p0012[P0012R1] | 7 | __cpp_noexcept_function_type >= 201510
+| __has_include for C++17 | http://wg21.link/p0061[P0061R1] | 5 | 
+| Rewording inheriting constructors (core issue 1941 et al) | http://wg21.link/p0136[P0136R1] | 7 | __cpp_inheriting_constructors >= 201511
+| Inline variables | http://wg21.link/p0386r2[P0386R2] | 7 | __cpp_inline_variables >= 201606
+| DR 150, Matching of template template arguments | http://wg21.link/p0522r0[P0522R0] | 7 | __cpp_template_template_args >= 201611
+| Removing dynamic exception specifications | http://wg21.link/p0003r5[P0003R5] | 7 | 
+| Pack expansions in using-declarations | http://wg21.link/p0195r2[P0195R2] | 7 | __cpp_variadic_using >= 201611
+| A byte type definition | http://wg21.link/p0298r0[P0298R0] | 7 | 
+|====
+  
