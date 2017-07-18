@@ -1,4 +1,4 @@
-# Install script for directory: /home/s/Masaüstü/Staj/octree
+# Install script for directory: /home/s/Masaüstü/PCL-ROS/OCTREE KD-TREE/Octree
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/s/Masaüstü/Staj/octree/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/s/Masaüstü/PCL-ROS/OCTREE KD-TREE/Octree/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,5 +1,12 @@
 17.07.2017
 
+== K-D Tree
+K-D tree k boyutlu bir uzayda bir diz noktayı tanımlayan bir veri yapısıdır. Dizi arama işlemlerini çok verimli hale getirir (Örneğin en yakın komşu uzaydaki bir noktaya en yakın noktayı bulmak veya bir daire içindeki tüm komşu noktaları bulmak için kullanılabilir)
+
+Bu bir binary tree dir. Her düğümün sağ ve sol olmak üzere iki alt düğümü bulunmaktadır.Her seviye belirli bir boyut üzerindeki alanı böler. Örneğin 3 boyutlu uzayda kök düğümde (birinci seviye) tüm çocuklar ilk boyuta göre bölünürler, X'ten daha büyük X değerine sahip noktalar ağacın sağ düğümüne, daha küçük X değerine sahip noktalar sol düğüme gider. İkinci seviyede yeni oluşturulmuş olan düğümler aynı ölçütü kullanarak Y eksenini üzerinde yapılır. Üçüncü seviyede (düğümler) Z eksenini kullanırız. Dördüncü seviyede, X eksenine geri döneceğiz, vb. Genellikle, orta nokta her seviyede kök olarak seçilir. 
+
+image::Kdtree_aciklama.png[]
+image::Kdtree.gif[]
 
 == PCL Kütüphanesi Octree Kodunun Çalıştırılması
 
