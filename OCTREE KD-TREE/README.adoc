@@ -276,7 +276,7 @@ Neighbors within radius search at (455.807 417.256 406.502) with radius=225.932
 * Çıktılar: Nokta indisleri, Kare uzaklıkları
 
 == OCTree
-K-d tree gibi, oktree, aramalarda yararlı olan hiyerarşik bir ağaç veri yapısıdır, ancak aynı zamanda sıkıştırma veya aşağı örnekleme de vardır. Her oktree düğüm (bir voksel, 3D motor kullanıcıları için tanıdık gelecek ve "3D piksel", yani bir küp şeklinde tanımlanabilen bir terim) sekiz alt düğüme sahiptir ya da hiç sahip değildir. Kök düğüm tüm noktaları kapsülleyen bir kübik sınırlama kutusu tanımlar. Her seviyede, artan bir voksel çözünürlüğe neden olan 2 faktörü ile bölünür. Böylelikle, belirli bölgelere seçici bir şekilde daha fazla çözünürlük verebiliriz.  
+K-d tree gibi, oktree, aramalarda yararlı olan hiyerarşik bir ağaç veri yapısıdır, ancak aynı zamanda sıkıştırma veya aşağı örnekleme de vardır. Her oktree düğüm sekiz alt düğüme sahiptir ya da hiç sahip değildir. Kök düğüm tüm noktaları kapsülleyen bir kübik sınırlama kutusu tanımlar. Her seviyede, artan bir voksel çözünürlüğe neden olan 2 faktörü ile bölünür. Böylelikle, belirli bölgelere seçici bir şekilde daha fazla çözünürlük verebiliriz.  
   
 
 == PCL Kütüphanesi Octree Kodunun Çalıştırılması
