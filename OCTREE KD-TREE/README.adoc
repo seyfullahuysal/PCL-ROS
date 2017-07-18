@@ -8,6 +8,277 @@ Bu bir binary tree dir. Her düğümün sağ ve sol olmak üzere iki alt düğü
 image::Kdtree_aciklama.png[]
 image::Kdtree.gif[]
 
+=== Kod
+
+Editörünüzde kdtree_search.cpp adında bir dosya oluşturun aşağıdakileri yerleştirin:
+[source,c++]
+----
+#include <pcl/point_cloud.h>
+#include <pcl/kdtree/kdtree_flann.h>
+
+#include 
+#include <vector>
+#include <ctime>
+
+int
+main (int argc, char** argv)
+{
+  srand (time (NULL));
+
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+
+  // Generate pointcloud data
+  cloud->width = 1000;
+  cloud->height = 1;
+  cloud->points.resize (cloud->width * cloud->height);
+
+  for (size_t i = 0; i < cloud->points.size (); ++i)
+  {
+    cloud->points[i].x = 1024.0f * rand () / (RAND_MAX + 1.0f);
+    cloud->points[i].y = 1024.0f * rand () / (RAND_MAX + 1.0f);
+    cloud->points[i].z = 1024.0f * rand () / (RAND_MAX + 1.0f);
+  }
+
+  pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+
+  kdtree.setInputCloud (cloud);
+
+  pcl::PointXYZ searchPoint;
+
+  searchPoint.x = 1024.0f * rand () / (RAND_MAX + 1.0f);
+  searchPoint.y = 1024.0f * rand () / (RAND_MAX + 1.0f);
+  searchPoint.z = 1024.0f * rand () / (RAND_MAX + 1.0f);
+
+  // K nearest neighbor search
+
+  int K = 10;
+
+  std::vector pointIdxNKNSearch(K);
+  std::vector<float> pointNKNSquaredDistance(K);
+
+  std::cout << "K nearest neighbor search at (" << searchPoint.x 
+            << " " << searchPoint.y 
+            << " " << searchPoint.z
+            << ") with K=" << K << std::endl;
+
+  if ( kdtree.nearestKSearch (searchPoint, K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 )
+  {
+    for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
+      std::cout << "    "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
+                << " " << cloud->points[ pointIdxNKNSearch[i] ].y 
+                << " " << cloud->points[ pointIdxNKNSearch[i] ].z 
+                << " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+  }
+
+  // Neighbors within radius search
+
+  std::vector pointIdxRadiusSearch;
+  std::vector<float> pointRadiusSquaredDistance;
+
+  float radius = 256.0f * rand () / (RAND_MAX + 1.0f);
+
+  std::cout << "Neighbors within radius search at (" << searchPoint.x 
+            << " " << searchPoint.y 
+            << " " << searchPoint.z
+            << ") with radius=" << radius << std::endl;
+
+  if ( kdtree.radiusSearch (searchPoint, radius, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 )
+  {
+    for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
+      std::cout << "    "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
+                << " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
+                << " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
+                << " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
+  }
+
+  return 0;
+}
+
+----
+
+===== Kodun Açıklaması
+
+Aşağıdaki kod random olarak noktalar oluşturur.
+[source,c++]
+----
+ srand (time (NULL));
+
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+
+  // Generate pointcloud data
+  cloud->width = 1000;
+  cloud->height = 1;
+  cloud->points.resize (cloud->width * cloud->height);
+
+  for (size_t i = 0; i < cloud->points.size (); ++i)
+  {
+    cloud->points[i].x = 1024.0f * rand () / (RAND_MAX + 1.0f);
+    cloud->points[i].y = 1024.0f * rand () / (RAND_MAX + 1.0f);
+    cloud->points[i].z = 1024.0f * rand () / (RAND_MAX + 1.0f);
+  }
+----
+
+Bu sonraki kod parçası, kdtree nesnemizi oluşturur ve rastgele oluşturulmuş bulutumuzu girdi olarak ayarlar. Sonra rasgele koordinatları atanan bir "searchPoint" oluştururuz.
+[source,c++]
+----
+pcl::KdTreeFLANN<pcl::PointXYZ> kdtree;
+
+  kdtree.setInputCloud (cloud);
+
+  pcl::PointXYZ searchPoint;
+
+  searchPoint.x = 1024.0f * rand () / (RAND_MAX + 1.0f);
+  searchPoint.y = 1024.0f * rand () / (RAND_MAX + 1.0f);
+  searchPoint.z = 1024.0f * rand () / (RAND_MAX + 1.0f);
+----
+
+Şimdi bir tamsayı oluşturuyoruz (onu 10'a eşitleyelim) ve aramadan K komşularımızı saklamak için iki vektör oluşturuyoruz.
+[source,c++]
+----
+  // K nearest neighbor search
+
+  int K = 10;
+
+  std::vector pointIdxNKNSearch(K);
+  std::vector<float> pointNKNSquaredDistance(K);
+
+  std::cout << "K nearest neighbor search at (" << searchPoint.x 
+            << " " << searchPoint.y 
+            << " " << searchPoint.z
+            << ") with K=" << K << std::endl;
+----
+
+KdTree miz bizim daha önce oluşturmuş olduğumuz vektörde saklanmış olan  rastgele “Searchpoint”  10  en yakın yakın komşunun yerlerini yazdırır 0'dan fazla yakın komşuları döndürür.
+[source,c++]
+----
+ if ( kdtree.nearestKSearch (searchPoint, K, pointIdxNKNSearch, pointNKNSquaredDistance) > 0 )
+  {
+    for (size_t i = 0; i < pointIdxNKNSearch.size (); ++i)
+      std::cout << "    "  <<   cloud->points[ pointIdxNKNSearch[i] ].x 
+                << " " << cloud->points[ pointIdxNKNSearch[i] ].y 
+                << " " << cloud->points[ pointIdxNKNSearch[i] ].z 
+                << " (squared distance: " << pointNKNSquaredDistance[i] << ")" << std::endl;
+  }
+----
+
+Şimdi bazı (rastgele oluşturulmuş) yarıçap içinde verilen "searchPoint" e komşuları bulmamızı göstermektedir. Komşularımız hakkında bilgi depolamak için yine 2 vektör oluşturuyoruz.
+[source,c++]
+----
+// Neighbors within radius search
+
+  std::vector pointIdxRadiusSearch;
+  std::vector<float> pointRadiusSquaredDistance;
+
+  float radius = 256.0f * rand () / (RAND_MAX + 1.0f);
+----
+
+Daha önce olduğu gibi, KdTree'imiz belirtilen yarıçap içerisinde 0'dan fazla komşu bulursa, vektörlerimizde saklanan bu noktaların koordinatlarını yazdırır.
+[source,c++]
+----
+ if ( kdtree.radiusSearch (searchPoint, radius, pointIdxRadiusSearch, pointRadiusSquaredDistance) > 0 )
+  {
+    for (size_t i = 0; i < pointIdxRadiusSearch.size (); ++i)
+      std::cout << "    "  <<   cloud->points[ pointIdxRadiusSearch[i] ].x 
+                << " " << cloud->points[ pointIdxRadiusSearch[i] ].y 
+                << " " << cloud->points[ pointIdxRadiusSearch[i] ].z 
+                << " (squared distance: " << pointRadiusSquaredDistance[i] << ")" << std::endl;
+  }
+----
+
+===== Derleme Ve Çalıştırma
+Aşağıdaki komutları CMakeLists.txt dosyamıza ekleyelim.
+[source,c++]
+----
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+
+project(kdtree_search)
+
+find_package(PCL 1.2 REQUIRED)
+
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
+
+add_executable (kdtree_search kdtree_search.cpp)
+target_link_libraries (kdtree_search ${PCL_LIBRARIES})
+----
+
+Şimdi yütütülebilir dosyamızı çalıştıralım
+[source,c++]
+----
+$ ./kdtree_search
+
+----
+Sonuç olarak şöyle bi çıktı elde ederiz
+[source,java]
+----
+K nearest neighbor search at (455.807 417.256 406.502) with K=10
+  494.728 371.875 351.687 (squared distance: 6578.99)
+  506.066 420.079 478.278 (squared distance: 7685.67)
+  368.546 427.623 416.388 (squared distance: 7819.75)
+  474.832 383.041 323.293 (squared distance: 8456.34)
+  470.992 334.084 468.459 (squared distance: 10986.9)
+  560.884 417.637 364.518 (squared distance: 12803.8)
+  466.703 475.716 306.269 (squared distance: 13582.9)
+  456.907 336.035 304.529 (squared distance: 16996.7)
+  452.288 387.943 279.481 (squared distance: 17005.9)
+  476.642 410.422 268.057 (squared distance: 19647.9)
+Neighbors within radius search at (455.807 417.256 406.502) with radius=225.932
+  494.728 371.875 351.687 (squared distance: 6578.99)
+  506.066 420.079 478.278 (squared distance: 7685.67)
+  368.546 427.623 416.388 (squared distance: 7819.75)
+  474.832 383.041 323.293 (squared distance: 8456.34)
+  470.992 334.084 468.459 (squared distance: 10986.9)
+  560.884 417.637 364.518 (squared distance: 12803.8)
+  466.703 475.716 306.269 (squared distance: 13582.9)
+  456.907 336.035 304.529 (squared distance: 16996.7)
+  452.288 387.943 279.481 (squared distance: 17005.9)
+  476.642 410.422 268.057 (squared distance: 19647.9)
+  499.429 541.532 351.35 (squared distance: 20389)
+  574.418 452.961 334.7 (squared distance: 20498.9)
+  336.785 391.057 488.71 (squared distance: 21611)
+  319.765 406.187 350.955 (squared distance: 21715.6)
+  528.89 289.583 378.979 (squared distance: 22399.1)
+  504.509 459.609 541.732 (squared distance: 22452.8)
+  539.854 349.333 300.395 (squared distance: 22936.3)
+  548.51 458.035 292.812 (squared distance: 23182.1)
+  546.284 426.67 535.989 (squared distance: 25041.6)
+  577.058 390.276 508.597 (squared distance: 25853.1)
+  543.16 458.727 276.859 (squared distance: 26157.5)
+  613.997 387.397 443.207 (squared distance: 27262.7)
+  608.235 467.363 327.264 (squared distance: 32023.6)
+  506.842 591.736 391.923 (squared distance: 33260.3)
+  529.842 475.715 241.532 (squared distance: 36113.7)
+  485.822 322.623 244.347 (squared distance: 36150.5)
+  362.036 318.014 269.201 (squared distance: 37493.6)
+  493.806 600.083 462.742 (squared distance: 38032.3)
+  392.315 368.085 585.37 (squared distance: 38442.9)
+  303.826 428.659 533.642 (squared distance: 39392.8)
+  616.492 424.551 289.524 (squared distance: 39556.8)
+  320.563 333.216 278.242 (squared distance: 41804.5)
+  646.599 502.256 424.46 (squared distance: 43948.8)
+  556.202 325.013 568.252 (squared distance: 44751)
+  291.27 497.352 515.938 (squared distance: 45463.9)
+  286.483 322.401 495.377 (squared distance: 45567.2)
+  367.288 550.421 550.551 (squared distance: 46318.6)
+  595.122 582.77 394.894 (squared distance: 46938.1)
+  256.784 499.401 379.931 (squared distance: 47064.1)
+  430.782 230.854 293.829 (squared distance: 48067.2)
+  261.051 486.593 329.854 (squared distance: 48612.7)
+  602.061 327.892 545.269 (squared distance: 48632.4)
+  347.074 610.994 395.622 (squared distance: 49475.6)
+  482.876 284.894 583.888 (squared distance: 49718.6)
+  356.962 247.285 514.959 (squared distance: 50423.7)
+  282.065 509.488 516.216 (squared distance: 50730.4)
+----
+
+* Girişler: Noktalar, yarıçap | Komşu sayısı 
+* Çıktılar: Nokta indisleri, Kare uzaklıkları
+
+== OCTree
+K-d tree gibi, oktree, aramalarda yararlı olan hiyerarşik bir ağaç veri yapısıdır, ancak aynı zamanda sıkıştırma veya aşağı örnekleme de vardır. Her oktree düğüm (bir voksel, 3D motor kullanıcıları için tanıdık gelecek ve "3D piksel", yani bir küp şeklinde tanımlanabilen bir terim) sekiz alt düğüme sahiptir ya da hiç sahip değildir. Kök düğüm tüm noktaları kapsülleyen bir kübik sınırlama kutusu tanımlar. Her seviyede, artan bir voksel çözünürlüğe neden olan 2 faktörü ile bölünür. Böylelikle, belirli bölgelere seçici bir şekilde daha fazla çözünürlük verebiliriz.  
+  
+
 == PCL Kütüphanesi Octree Kodunun Çalıştırılması
 
 Daha önceden anlatıldığı gibi PCL kütüphanesi kurulduktan sonra bir octree kodunun çalıştırılması için aşağıdaki işlemler yapılmalıdır.
