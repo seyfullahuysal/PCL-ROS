@@ -54,7 +54,7 @@ main ()
     pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA>* PointCloudEncoder;
     pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA>* PointCloudDecoder;
 
-    pcl::io::compression_Profiles_e compressionProfile = pcl::io::LOW_RES_OFFLINE_COMPRESSION_WITH_COLOR;
+    pcl::io::compression_Profiles_e compressionProfile = pcl::io::HIGH_RES_OFFLINE_COMPRESSION_WITH_COLOR;
 
     // instantiate point cloud compression for encoding and decoding
     PointCloudEncoder = new pcl::io::OctreePointCloudCompression<pcl::PointXYZRGBA> (compressionProfile, showStatistics);
@@ -75,7 +75,7 @@ main ()
       pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloudOut (new pcl::PointCloud<pcl::PointXYZRGBA> ());
 
 // datayı sıkıştırmak için kullanılıyor.
-     // PointCloudEncoder->encodePointCloud (cloud, compressedData);
+      //PointCloudEncoder->encodePointCloud (cloud, compressedData);
 
 
      // PointCloudDecoder->decodePointCloud (compressedData, cloudOut);

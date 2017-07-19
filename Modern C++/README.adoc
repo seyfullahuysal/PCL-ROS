@@ -59,22 +59,6 @@ sudo apt-get install python-rosinstall
 ----
 
 
-* ROS için tanımlamamız gereken ortam değişkenleri vardır bunlar için aşağıdaki kodları .bashrc dosyasına ekleyeceğiz. ( user yazan kısımlara kendi kullanıcı adınızı giriniz.)
-
-----
-export ROS_ROOT=/home/user/ros/ros
-export PATH=$ROS_ROOT/bin:$PATH
-export PYTHONPATH=$PYTHONPATH:$ROS_ROOT/core/roslib/src
-export ROS_PACKAGE_PATH=/home/user/ros/ros-pkg:/another/path
-----
-
-* yukarıdaki kodları .bashrc dosyasına ekleyeceğiz. Aşağıdaki kod ile bashrc dosyasını açalım ve en sonuna ekleyelim.
-
-----
-cd ~
-gedit .bashrc
-----
-
 Bu işlemden sonra Ros kurulumumuz tamamlanmıştır.
 
 
