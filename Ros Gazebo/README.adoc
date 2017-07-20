@@ -133,8 +133,8 @@ Gazeboda simülasyon ortamımızı açalım.
 [source,]
 ----
 
-source /opt/ros/indigo/setup.bash
-
+$ roslaunch turtlebot_gazebo turtlebot_world.launch
+ 
 ----
 image::turtlebot_playground.png[]
 
