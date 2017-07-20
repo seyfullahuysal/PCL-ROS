@@ -175,6 +175,14 @@ $ roslaunch turtlebot_rviz_launchers view_navigation.launch
 
 image::turtlebot_playground_rviz.png[]
 
+
+aşağıdaki komutla açılan terminal üzerinden robotu hareket ettirebiliriz.
+
+[source,]
+----
+roslaunch turtlebot_teleop keyboard_teleop.launch
+----
+
 Son olarak haritamızı kaydedelim
 [source,]
 ----
