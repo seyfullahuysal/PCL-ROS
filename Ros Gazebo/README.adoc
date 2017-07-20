@@ -203,5 +203,43 @@ http://turtlebot3.robotis.com/en/latest/index.html
 
 
 
+=== HLS-LFCD LDS
+
+Aşağıdaki linkten sensör kaynaklarını indirdim ve ros package path'e attım
+
+https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver
+
+linktede anlatıldığı gibi rosta çalıştırmak için şu komutları denedim
+
+[source,]
+----
+s@su:~$ roslaunch hls_lfcd_lds_driver hlds_laser.launch
+----
+
+ancak aşağıdaki hatayı verdi
+[source,]
+----
+
+multiple files named [hlds_laser.launch] in package [hls_lfcd_lds_driver]:
+- /opt/ros/kinetic/share/hls_lfcd_lds_driver/launch/hlds_laser.launch
+- /home/s/workingspace/hls_lfcd_lds_driver/launch/hlds_laser.launch
+Please specify full path instead
+The traceback for the exception was written to the log file
+----
+
+[source,]
+----
+s@su:~$ roslaunch hls_lfcd_lds_driver view_hlds_laser.launch
+
+----
+[source,]
+----
+multiple files named [view_hlds_laser.launch] in package [hls_lfcd_lds_driver]:
+- /opt/ros/kinetic/share/hls_lfcd_lds_driver/launch/view_hlds_laser.launch
+- /home/s/workingspace/hls_lfcd_lds_driver/launch/view_hlds_laser.launch
+Please specify full path instead
+The traceback for the exception was written to the log file
+----
+
 
 
