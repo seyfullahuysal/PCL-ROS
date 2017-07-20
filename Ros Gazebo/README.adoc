@@ -186,13 +186,12 @@ $ rosrun map_server map_saver -f <harita adı>
 
 == Turtlebot3
 
-http://spectrum.ieee.org/automaton/robotics/robotics-hardware/review-robotis-turtlebot-3
+http://spectrum.ieee.org/automaton/robotics/robotics-hardware/review-robotis-turtlebot-3[Bu kaynakta] Turtlebot3 ubuntu 16.04 ve ros kinetic in son sürümünü desteklediği yazmaktadır.
 
-http://turtlebot3.readthedocs.io/en/latest/simulation.html#gazebo-3d
+http://turtlebot3.readthedocs.io/en/latest/simulation.html#gazebo-3d[Bu kaynakta] ise turtlebot3 için gazebo ortamında sanallaştırmayla ilgili bir örnek mevcut.
 
-http://turtlebot3.robotis.com/en/latest/pc_software.html#install-dependent-packages
+http://turtlebot3.robotis.com/en/latest/index.html
 
-Yukarıdaki kaynaklarda Turtlebot3 ün gazebo,ros kinetic destekler.
 
 
 
