@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+  <name>agvs</name>
+  <version>0.1.0</version>
+  <description>The agvs package. This package contains all the components to simulate the AGVS robot. An ackermann type robot intended for logistics transport.</description>
+
+ 
+  <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
+  <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
+
+  <author email="rnavarro@robotnik.es">Román Navarro</author>
+  
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/agvs</url>
+  <url type="repository">https://github.com/RobotnikAutomation/agvs</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/agvs/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <run_depend>agvs_complete</run_depend>
+  <run_depend>agvs_control</run_depend>
+  <run_depend>agvs_description</run_depend>
+  <run_depend>agvs_gazebo</run_depend>
+  <run_depend>agvs_pad</run_depend>
+  <run_depend>agvs_robot_control</run_depend>
+  <run_depend>planner_msgs</run_depend>
+  <run_depend>purepursuit_planner</run_depend>
+
+  <export><metapackage/></export>
+</package>
