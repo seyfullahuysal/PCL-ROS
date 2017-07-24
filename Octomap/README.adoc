@@ -1,11 +1,23 @@
 == Turtelbot 3d Haritalama
 
 === OctoMap
-OctoMap kütüphanesirobotik için özellikle uygun C ++ veri yapıları ve eşleme algoritma sunan, bir 3D harita eşleme yaklaşımı uygular. Harita uygulaması bir oktree üzerine kuruludur.
 
-OktoMap kullanarak gazebo üzerinden 3 boyutlu harita elde etmek bir tutorialdan faydalanarak aşağıdaki işlemleri yaptım.
+Octomap kütüphanesi ros içerisinde bulunan ve özellikle C++ için veri yapıları ve eşleme algoritmaları sunan bir Octree tabanlı 3D haritalama yaklaşımıdır. Ve aşağıdaki gereksinimleri karşılayabilir.
 
-gazebo ortamında similasyon için robotu çalıştırdım.
+*Tam 3D model* Harita, önceden varsayımlar yapılmadan keyfi ortamları modelliyor.Ortamda bilinmeyen bölgeler haritada örtülü olarak kodlanmıştır. Serbest ve dolaysız alan arasındaki ayrım, güvenli robot navigasyonu için gerekliyken, bilinmeyen bölgeler hakkında bilgi önemlidir, örneğin, bir ortamın bağımsız araştırılması için.
+
+*Güncellenebilir*. İstediğiniz zaman yeni bilgi veya sensör okumaları eklemek mümkündür. Modelleme ve güncelleme, olasılıksal bir biçimde yapılır . Bu, algılayıcı gürültüsü veya çevredeki dinamik değişikliklerden kaynaklanan ölçümleri,dinamik nesneler nedeniyle hesaplar. Ayrıca, birden fazla robot aynı haritaya katkıda bulunabilir ve yeni alanlar keşfedildiğinde önceden kaydedilmiş bir harita genişletilebilir.
+
+*Esnek*. Haritanın kapsamının önceden bilinmesi gerekmez. Bunun yerine, harita gerektiğinde dinamik olarak genişletilir. Harita çok çözünürlüklüdür, böylece yerel planlayıcı ince bir çözünürlük kullanarak çalışabilirken, üst düzey planlayıcı kaba bir haritayı kullanabilir. Ayrıca, kaba genel görünümlerden ayrıntılı yakın planlara kadar etkili görselleştirmeler yapılmasına olanak tanır.
+
+*Kompakt*. Harita hem belleğe hem de diske etkin bir şekilde depolanır. Bant genişliği kısıtlamaları altında bile robotlar arasında daha sonra veya rahat alış veriş için sıkıştırılmış dosyalar oluşturmak mümkündür.
+
+
+
+
+== Gazebo ve Rviz Ortamında Octomap Haritalama
+
+
 [source,]
 ----
 sudo apt-get install ros-kinetic-octomap-server ros-kinetic-turtlebot ros-kinetic-turtlebot-teleop ros-kinetic-turtlebot-description ros-kinetic-turtlebot-navigation ros-kinetic-turtlebot-rviz-launchers ros-kinetic-turtlebot-simulator ros-kinetic-turtlebot-simulator
