@@ -30,7 +30,7 @@ robot hareketi sağlamak için
 roslaunch turtlebot_teleop keyboard_teleop.launch
 ----
 
-octomap_turtlebot.launch adında bir dosya oluşturum şunu yapıştıralım
+octomap_turtlebot.launch adında bir dosya oluşturup şunu yapıştıralım
 
 
 [source,]
@@ -59,7 +59,8 @@ Ancak ben çalıştırdığım zaman noktalar tarandıktan sonra görünmüyor.A
 
 image::octomap2.png[]
 
-Bu sorunu Rviz içerisinden topiklere göre /occupied_cells_vis_array topiği ile marker_arrays ekleyerek halettim.
+Bu sorunu birçok yerde araştırmama rağmen bir çözüm bulamadım ve Rviz ile uğraşırken sorunu şöyle çözdüm.
+Rviz içerisinden topiklere göre /occupied_cells_vis_array topiği ile marker_arrays ekleyerek halettim.
 
 image::octomap3.png[]
 
