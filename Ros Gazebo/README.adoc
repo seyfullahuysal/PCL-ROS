@@ -205,6 +205,8 @@ http://turtlebot3.robotis.com/en/latest/index.html
 
 === HLS-LFCD LDS
 
+http://turtlebot3.readthedocs.io/en/latest/appendix_lds.html#overview
+
 Aşağıdaki linkten sensör kaynaklarını indirdim ve ros package path'e attım
 
 https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver
