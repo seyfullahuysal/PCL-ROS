@@ -51,6 +51,13 @@ octomap_turtlebot.launch adında bir dosya oluşturup şunu yapıştıralım
 </launch>
 ----
 
+Dosyayı kaydettiğimiz dizine giderek şunu çalıştıralım.
+
+[source,]
+----
+roslaunch octomap_turtlebot.launch
+----
+
 http://ros-developer.com/2017/05/02/making-occupancy-grid-map-in-ros-from-gazebo-with-octomap/[Bu] siteyi takip ederek yaptığım tutorialda aşağıdaki görüntü oluşmaktadır.
 
 image::octomap1.png[]
