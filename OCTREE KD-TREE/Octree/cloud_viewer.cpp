@@ -63,7 +63,7 @@ main ()
 
 
     pcl::PointCloud<pcl::PointXYZRGBA>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGBA>);
-    pcl::io::loadPCDFile ("/home/s/Masaüstü/PCL-ROS/OCTREE KD-TREE/Octree/221260000000.pcd", *cloud);
+    pcl::io::loadPCDFile ("/home/s/Masaüstü/PCL-ROS/OCTREE KD-TREE/Octree/242970000000.pcd", *cloud);
 
     pcl::visualization::CloudViewer viewer("Cloud Viewer");
 

@@ -62,6 +62,14 @@ octomap_turtlebot.launch adında bir dosya oluşturup şunu yapıştıralım
 </node>
 </launch>
 ----
+Parametrelerden biraz bahsedelim:
+
+*resolution* : Octree nin çözünürlüğü ne kadar düşükse okadar ayrıntıı point cloud üretilir.
+
+*frame_id* : Simülasyon ortamının görünüş biçimi.
+
+*cloud_in* : Point cloud'un yayın yapılacağı topic.
+
 
 Dosyayı kaydettiğimiz dizine giderek şunu çalıştıralım.
 
