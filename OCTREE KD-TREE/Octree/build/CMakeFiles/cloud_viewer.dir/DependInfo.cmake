@@ -10,13 +10,10 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "DISABLE_DAVIDSDK"
-  "DISABLE_DSSDK"
-  "DISABLE_ENSENSO"
-  "DISABLE_LIBUSB_1_0"
   "DISABLE_PCAP"
   "DISABLE_PNG"
-  "DISABLE_RSSDK"
+  "EIGEN_USE_NEW_STDVECTOR"
+  "EIGEN_YES_I_KNOW_SPARSE_MODULE_IS_NOT_STABLE_YET"
   "FLANN_STATIC"
   "QT_CORE_LIB"
   "QT_GUI_LIB"
@@ -50,7 +47,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/lib/openmpi/include/openmpi"
   "/usr/include/libxml2"
   "/usr/include/tcl"
-  "/usr/include/pcl-1.8"
+  "/usr/include/pcl-1.7"
   "/usr/include/eigen3"
   "/usr/include/ni"
   "/usr/include/openni2"

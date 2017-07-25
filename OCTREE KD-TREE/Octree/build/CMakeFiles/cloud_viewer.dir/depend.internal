@@ -228,114 +228,105 @@ CMakeFiles/cloud_viewer.dir/cloud_viewer.cpp.o
  /usr/include/ni/XnTypes.h
  /usr/include/ni/XnUtils.h
  /usr/include/ni/XnVersion.h
- /usr/include/pcl-1.8/pcl/ModelCoefficients.h
- /usr/include/pcl-1.8/pcl/PCLHeader.h
- /usr/include/pcl-1.8/pcl/PCLImage.h
- /usr/include/pcl-1.8/pcl/PCLPointCloud2.h
- /usr/include/pcl-1.8/pcl/PCLPointField.h
- /usr/include/pcl-1.8/pcl/PointIndices.h
- /usr/include/pcl-1.8/pcl/PolygonMesh.h
- /usr/include/pcl-1.8/pcl/TextureMesh.h
- /usr/include/pcl-1.8/pcl/Vertices.h
- /usr/include/pcl-1.8/pcl/common/colors.h
- /usr/include/pcl-1.8/pcl/common/common.h
- /usr/include/pcl-1.8/pcl/common/concatenate.h
- /usr/include/pcl-1.8/pcl/common/copy_point.h
- /usr/include/pcl-1.8/pcl/common/eigen.h
- /usr/include/pcl-1.8/pcl/common/geometry.h
- /usr/include/pcl-1.8/pcl/common/impl/common.hpp
- /usr/include/pcl-1.8/pcl/common/impl/copy_point.hpp
- /usr/include/pcl-1.8/pcl/common/impl/eigen.hpp
- /usr/include/pcl-1.8/pcl/common/impl/io.hpp
- /usr/include/pcl-1.8/pcl/common/io.h
- /usr/include/pcl-1.8/pcl/common/point_tests.h
- /usr/include/pcl-1.8/pcl/common/synchronizer.h
- /usr/include/pcl-1.8/pcl/compression/color_coding.h
- /usr/include/pcl-1.8/pcl/compression/compression_profiles.h
- /usr/include/pcl-1.8/pcl/compression/entropy_range_coder.h
- /usr/include/pcl-1.8/pcl/compression/octree_pointcloud_compression.h
- /usr/include/pcl-1.8/pcl/compression/point_coding.h
- /usr/include/pcl-1.8/pcl/console/print.h
- /usr/include/pcl-1.8/pcl/conversions.h
- /usr/include/pcl-1.8/pcl/correspondence.h
- /usr/include/pcl-1.8/pcl/exceptions.h
- /usr/include/pcl-1.8/pcl/for_each_type.h
- /usr/include/pcl-1.8/pcl/geometry/planar_polygon.h
- /usr/include/pcl-1.8/pcl/impl/instantiate.hpp
- /usr/include/pcl-1.8/pcl/impl/pcl_base.hpp
- /usr/include/pcl-1.8/pcl/impl/point_types.hpp
- /usr/include/pcl-1.8/pcl/io/boost.h
- /usr/include/pcl-1.8/pcl/io/eigen.h
- /usr/include/pcl-1.8/pcl/io/file_io.h
- /usr/include/pcl-1.8/pcl/io/grabber.h
- /usr/include/pcl-1.8/pcl/io/impl/pcd_io.hpp
- /usr/include/pcl-1.8/pcl/io/io.h
- /usr/include/pcl-1.8/pcl/io/lzf.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_depth_image.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_device.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_device_kinect.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_driver.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_exception.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_image.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_image_bayer_grbg.h
- /usr/include/pcl-1.8/pcl/io/openni_camera/openni_ir_image.h
- /usr/include/pcl-1.8/pcl/io/openni_grabber.h
- /usr/include/pcl-1.8/pcl/io/pcd_io.h
- /usr/include/pcl-1.8/pcl/octree/boost.h
- /usr/include/pcl-1.8/pcl/octree/impl/octree2buf_base.hpp
- /usr/include/pcl-1.8/pcl/octree/impl/octree_base.hpp
- /usr/include/pcl-1.8/pcl/octree/impl/octree_iterator.hpp
- /usr/include/pcl-1.8/pcl/octree/impl/octree_pointcloud.hpp
- /usr/include/pcl-1.8/pcl/octree/impl/octree_pointcloud_adjacency.hpp
- /usr/include/pcl-1.8/pcl/octree/impl/octree_pointcloud_voxelcentroid.hpp
- /usr/include/pcl-1.8/pcl/octree/impl/octree_search.hpp
- /usr/include/pcl-1.8/pcl/octree/octree.h
- /usr/include/pcl-1.8/pcl/octree/octree2buf_base.h
- /usr/include/pcl-1.8/pcl/octree/octree_base.h
- /usr/include/pcl-1.8/pcl/octree/octree_container.h
- /usr/include/pcl-1.8/pcl/octree/octree_iterator.h
- /usr/include/pcl-1.8/pcl/octree/octree_key.h
- /usr/include/pcl-1.8/pcl/octree/octree_nodes.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_adjacency.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_adjacency_container.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_changedetector.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_density.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_occupancy.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_pointvector.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_singlepoint.h
- /usr/include/pcl-1.8/pcl/octree/octree_pointcloud_voxelcentroid.h
- /usr/include/pcl-1.8/pcl/octree/octree_search.h
- /usr/include/pcl-1.8/pcl/pcl_base.h
- /usr/include/pcl-1.8/pcl/pcl_config.h
- /usr/include/pcl-1.8/pcl/pcl_exports.h
- /usr/include/pcl-1.8/pcl/pcl_macros.h
- /usr/include/pcl-1.8/pcl/point_cloud.h
- /usr/include/pcl-1.8/pcl/point_traits.h
- /usr/include/pcl-1.8/pcl/point_types.h
- /usr/include/pcl-1.8/pcl/register_point_struct.h
- /usr/include/pcl-1.8/pcl/visualization/area_picking_event.h
- /usr/include/pcl-1.8/pcl/visualization/boost.h
- /usr/include/pcl-1.8/pcl/visualization/cloud_viewer.h
- /usr/include/pcl-1.8/pcl/visualization/common/actor_map.h
- /usr/include/pcl-1.8/pcl/visualization/common/common.h
- /usr/include/pcl-1.8/pcl/visualization/common/impl/common.hpp
- /usr/include/pcl-1.8/pcl/visualization/common/impl/shapes.hpp
- /usr/include/pcl-1.8/pcl/visualization/common/ren_win_interact_map.h
- /usr/include/pcl-1.8/pcl/visualization/common/shapes.h
- /usr/include/pcl-1.8/pcl/visualization/eigen.h
- /usr/include/pcl-1.8/pcl/visualization/impl/pcl_visualizer.hpp
- /usr/include/pcl-1.8/pcl/visualization/impl/point_cloud_color_handlers.hpp
- /usr/include/pcl-1.8/pcl/visualization/impl/point_cloud_geometry_handlers.hpp
- /usr/include/pcl-1.8/pcl/visualization/interactor_style.h
- /usr/include/pcl-1.8/pcl/visualization/keyboard_event.h
- /usr/include/pcl-1.8/pcl/visualization/mouse_event.h
- /usr/include/pcl-1.8/pcl/visualization/pcl_visualizer.h
- /usr/include/pcl-1.8/pcl/visualization/point_cloud_color_handlers.h
- /usr/include/pcl-1.8/pcl/visualization/point_cloud_geometry_handlers.h
- /usr/include/pcl-1.8/pcl/visualization/point_cloud_handlers.h
- /usr/include/pcl-1.8/pcl/visualization/point_picking_event.h
+ /usr/include/pcl-1.7/pcl/ModelCoefficients.h
+ /usr/include/pcl-1.7/pcl/PCLHeader.h
+ /usr/include/pcl-1.7/pcl/PCLImage.h
+ /usr/include/pcl-1.7/pcl/PCLPointCloud2.h
+ /usr/include/pcl-1.7/pcl/PCLPointField.h
+ /usr/include/pcl-1.7/pcl/PointIndices.h
+ /usr/include/pcl-1.7/pcl/PolygonMesh.h
+ /usr/include/pcl-1.7/pcl/TextureMesh.h
+ /usr/include/pcl-1.7/pcl/Vertices.h
+ /usr/include/pcl-1.7/pcl/common/common.h
+ /usr/include/pcl-1.7/pcl/common/concatenate.h
+ /usr/include/pcl-1.7/pcl/common/copy_point.h
+ /usr/include/pcl-1.7/pcl/common/eigen.h
+ /usr/include/pcl-1.7/pcl/common/impl/common.hpp
+ /usr/include/pcl-1.7/pcl/common/impl/copy_point.hpp
+ /usr/include/pcl-1.7/pcl/common/impl/eigen.hpp
+ /usr/include/pcl-1.7/pcl/common/impl/io.hpp
+ /usr/include/pcl-1.7/pcl/common/io.h
+ /usr/include/pcl-1.7/pcl/common/point_operators.h
+ /usr/include/pcl-1.7/pcl/common/point_tests.h
+ /usr/include/pcl-1.7/pcl/common/synchronizer.h
+ /usr/include/pcl-1.7/pcl/compression/color_coding.h
+ /usr/include/pcl-1.7/pcl/compression/compression_profiles.h
+ /usr/include/pcl-1.7/pcl/compression/entropy_range_coder.h
+ /usr/include/pcl-1.7/pcl/compression/octree_pointcloud_compression.h
+ /usr/include/pcl-1.7/pcl/compression/point_coding.h
+ /usr/include/pcl-1.7/pcl/console/print.h
+ /usr/include/pcl-1.7/pcl/conversions.h
+ /usr/include/pcl-1.7/pcl/correspondence.h
+ /usr/include/pcl-1.7/pcl/exceptions.h
+ /usr/include/pcl-1.7/pcl/for_each_type.h
+ /usr/include/pcl-1.7/pcl/geometry/planar_polygon.h
+ /usr/include/pcl-1.7/pcl/impl/pcl_base.hpp
+ /usr/include/pcl-1.7/pcl/impl/point_types.hpp
+ /usr/include/pcl-1.7/pcl/io/boost.h
+ /usr/include/pcl-1.7/pcl/io/eigen.h
+ /usr/include/pcl-1.7/pcl/io/file_io.h
+ /usr/include/pcl-1.7/pcl/io/grabber.h
+ /usr/include/pcl-1.7/pcl/io/impl/pcd_io.hpp
+ /usr/include/pcl-1.7/pcl/io/io.h
+ /usr/include/pcl-1.7/pcl/io/lzf.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_depth_image.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_device.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_device_kinect.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_driver.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_exception.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_image.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_image_bayer_grbg.h
+ /usr/include/pcl-1.7/pcl/io/openni_camera/openni_ir_image.h
+ /usr/include/pcl-1.7/pcl/io/openni_grabber.h
+ /usr/include/pcl-1.7/pcl/io/pcd_io.h
+ /usr/include/pcl-1.7/pcl/octree/impl/octree_pointcloud.hpp
+ /usr/include/pcl-1.7/pcl/octree/impl/octree_pointcloud_voxelcentroid.hpp
+ /usr/include/pcl-1.7/pcl/octree/impl/octree_search.hpp
+ /usr/include/pcl-1.7/pcl/octree/octree.h
+ /usr/include/pcl-1.7/pcl/octree/octree2buf_base.h
+ /usr/include/pcl-1.7/pcl/octree/octree_base.h
+ /usr/include/pcl-1.7/pcl/octree/octree_container.h
+ /usr/include/pcl-1.7/pcl/octree/octree_iterator.h
+ /usr/include/pcl-1.7/pcl/octree/octree_key.h
+ /usr/include/pcl-1.7/pcl/octree/octree_nodes.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud_changedetector.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud_density.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud_occupancy.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud_pointvector.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud_singlepoint.h
+ /usr/include/pcl-1.7/pcl/octree/octree_pointcloud_voxelcentroid.h
+ /usr/include/pcl-1.7/pcl/octree/octree_search.h
+ /usr/include/pcl-1.7/pcl/pcl_base.h
+ /usr/include/pcl-1.7/pcl/pcl_config.h
+ /usr/include/pcl-1.7/pcl/pcl_exports.h
+ /usr/include/pcl-1.7/pcl/pcl_macros.h
+ /usr/include/pcl-1.7/pcl/point_cloud.h
+ /usr/include/pcl-1.7/pcl/point_traits.h
+ /usr/include/pcl-1.7/pcl/point_types.h
+ /usr/include/pcl-1.7/pcl/register_point_struct.h
+ /usr/include/pcl-1.7/pcl/visualization/area_picking_event.h
+ /usr/include/pcl-1.7/pcl/visualization/boost.h
+ /usr/include/pcl-1.7/pcl/visualization/cloud_viewer.h
+ /usr/include/pcl-1.7/pcl/visualization/common/actor_map.h
+ /usr/include/pcl-1.7/pcl/visualization/common/common.h
+ /usr/include/pcl-1.7/pcl/visualization/common/impl/common.hpp
+ /usr/include/pcl-1.7/pcl/visualization/common/impl/shapes.hpp
+ /usr/include/pcl-1.7/pcl/visualization/common/ren_win_interact_map.h
+ /usr/include/pcl-1.7/pcl/visualization/common/shapes.h
+ /usr/include/pcl-1.7/pcl/visualization/eigen.h
+ /usr/include/pcl-1.7/pcl/visualization/impl/pcl_visualizer.hpp
+ /usr/include/pcl-1.7/pcl/visualization/impl/point_cloud_color_handlers.hpp
+ /usr/include/pcl-1.7/pcl/visualization/impl/point_cloud_geometry_handlers.hpp
+ /usr/include/pcl-1.7/pcl/visualization/interactor_style.h
+ /usr/include/pcl-1.7/pcl/visualization/keyboard_event.h
+ /usr/include/pcl-1.7/pcl/visualization/mouse_event.h
+ /usr/include/pcl-1.7/pcl/visualization/pcl_visualizer.h
+ /usr/include/pcl-1.7/pcl/visualization/point_cloud_color_handlers.h
+ /usr/include/pcl-1.7/pcl/visualization/point_cloud_geometry_handlers.h
+ /usr/include/pcl-1.7/pcl/visualization/point_cloud_handlers.h
+ /usr/include/pcl-1.7/pcl/visualization/point_picking_event.h
  /usr/include/vtk-6.2/vtkABI.h
  /usr/include/vtk-6.2/vtkAbstractArray.h
  /usr/include/vtk-6.2/vtkAbstractMapper.h
@@ -405,13 +396,9 @@ CMakeFiles/cloud_viewer.dir/cloud_viewer.cpp.o
  /usr/include/vtk-6.2/vtkInteractorStyleTrackballCamera.h
  /usr/include/vtk-6.2/vtkLODActor.h
  /usr/include/vtk-6.2/vtkLeaderActor2D.h
- /usr/include/vtk-6.2/vtkLineSource.h
- /usr/include/vtk-6.2/vtkLookupTable.h
  /usr/include/vtk-6.2/vtkMappedDataArray.h
  /usr/include/vtk-6.2/vtkMappedDataArray.txx
  /usr/include/vtk-6.2/vtkMapper.h
- /usr/include/vtk-6.2/vtkMath.h
- /usr/include/vtk-6.2/vtkMathConfigure.h
  /usr/include/vtk-6.2/vtkMatrix4x4.h
  /usr/include/vtk-6.2/vtkOStrStreamWrapper.h
  /usr/include/vtk-6.2/vtkOStreamWrapper.h
@@ -436,7 +423,6 @@ CMakeFiles/cloud_viewer.dir/cloud_viewer.cpp.o
  /usr/include/vtk-6.2/vtkRenderingCoreModule.h
  /usr/include/vtk-6.2/vtkRenderingFreeTypeModule.h
  /usr/include/vtk-6.2/vtkRenderingLODModule.h
- /usr/include/vtk-6.2/vtkScalarsToColors.h
  /usr/include/vtk-6.2/vtkSetGet.h
  /usr/include/vtk-6.2/vtkSmartPointer.h
  /usr/include/vtk-6.2/vtkSmartPointerBase.h

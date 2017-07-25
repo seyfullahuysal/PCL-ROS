@@ -97,6 +97,7 @@ Octomap ile octree tabanlı 3d görüntümüz bu şekilde rviz üzerinde görül
 * Öncelikle topicten gelen mesajları rosbag olarak kaydetmemiz gerekir bunun için ros çalışırken aşağıdaki komutu kullanabiliriz.
 
 
+
 [source,]
 ----
 rosbag record -O <kayıt yolu> <topic>
@@ -110,6 +111,12 @@ rosbag record -O /home/s/Masaüstü/deneme /camera/depth/points
 
 * kaydedilen bu rosbag dosyasını .pcd dosyasına dönüştürmek için:
 
+dönüşüm işleminde ros kullanıldığı için eğer çalışan bir ros uygulamanız yoksa rosu çalıştırmanız gerekir
+[source,]
+----
+roscore
+----
+
 [source,]
 ----
 rosrun pcl_ros bag_to_pcd <bag dosyasının yolu> <topic> <.pcd doyasının yolu>
@@ -122,6 +129,20 @@ rosrun pcl_ros bag_to_pcd <bag dosyasının yolu> <topic> <.pcd doyasının yolu
 rosrun pcl_ros bag_to_pcd /home/s/Masaüstü/deneme.bag /camera/depth/points /home/s/Masaüstü/deneme
 ----
 
+
+veya rosbag dosyasını hiç oluşturmadan tobotumuz çalışır durumda iken aşağıdaki komut ile topicten alınan mesajlar direk olarak .pcd dosyası olarak kaydedilebilir.
+
+[source,]
+----
+rosrun pcl_ros pointcloud_to_pcd input:=<topic> _prefix:=<çıktı dosya yolu>
+----
+
+örneğin:
+
+[source,]
+----
+rosrun pcl_ros pointcloud_to_pcd input:=/camera/depth/points _prefix:=/home/s/Masaüstü/deneme/veriler
+----
 
 
 
