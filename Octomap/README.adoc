@@ -17,7 +17,7 @@ Octomap kütüphanesi ros içerisinde bulunan ve özellikle C++ için veri yapı
 
 == Gazebo ve Rviz Ortamında Octomap Haritalama
 
-
+Ros için octomap kurulumunu yapalım.
 [source,]
 ----
 sudo apt-get install ros-kinetic-octomap-server ros-kinetic-turtlebot ros-kinetic-turtlebot-teleop ros-kinetic-turtlebot-description ros-kinetic-turtlebot-navigation ros-kinetic-turtlebot-rviz-launchers ros-kinetic-turtlebot-simulator ros-kinetic-turtlebot-simulator
@@ -82,6 +82,40 @@ Bu sorunu birçok yerde araştırmama rağmen bir çözüm bulamadım ve Rviz il
 Rviz içerisinden topiklere göre /occupied_cells_vis_array topiği ile marker_arrays ekleyerek halettim.
 
 image::octomap3.png[]
+
+
+Octomap ile octree tabanlı 3d görüntümüz bu şekilde rviz üzerinde görülebilir eğer bu vokselleri(piksel in 3 boyutlu formu) point cloud data olarrak kaydetmek istersek aşağıdaki işlemleri yapabiliriz.
+
+* Öncelikle topicten gelen mesajları rosbag olarak kaydetmemiz gerekir bunun için ros çalışırken aşağıdaki komutu kullanabiliriz.
+
+
+[source,]
+----
+rosbag record -O <kayıt yolu> <topic>
+----
+örneğin:
+[source,]
+----
+rosbag record -O /home/s/Masaüstü/deneme /camera/depth/points
+
+----
+
+* kaydedilen bu rosbag dosyasını .pcd dosyasına dönüştürmek için:
+
+[source,]
+----
+rosrun pcl_ros bag_to_pcd <bag dosyasının yolu> <topic> <.pcd doyasının yolu>
+
+----
+
+örneğin:
+[source,]
+----
+rosrun pcl_ros bag_to_pcd /home/s/Masaüstü/deneme.bag /camera/depth/points /home/s/Masaüstü/deneme
+----
+
+
+
 
 
 
