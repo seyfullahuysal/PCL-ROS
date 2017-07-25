@@ -130,7 +130,8 @@ rosrun pcl_ros bag_to_pcd /home/s/Masaüstü/deneme.bag /camera/depth/points /ho
 ----
 
 
-veya rosbag dosyasını hiç oluşturmadan tobotumuz çalışır durumda iken aşağıdaki komut ile topicten alınan mesajlar direk olarak .pcd dosyası olarak kaydedilebilir.
+veya rosbag dosyasını hiç oluşturmadan tobotumuz çalışır durumda iken aşağıdaki komut ile topicten alınan mesajlar direk olarak .pcd dosyası olarak kaydedilebilir. Ayrıntılı bilgi için şu linke bakabilirsiniz.
+http://wiki.ros.org/pcl_ros
 
 [source,]
 ----
@@ -143,6 +144,7 @@ rosrun pcl_ros pointcloud_to_pcd input:=<topic> _prefix:=<çıktı dosya yolu>
 ----
 rosrun pcl_ros pointcloud_to_pcd input:=/camera/depth/points _prefix:=/home/s/Masaüstü/deneme/veriler
 ----
+
 
 
 
