@@ -145,6 +145,25 @@ rosrun pcl_ros pointcloud_to_pcd input:=<topic> _prefix:=<çıktı dosya yolu>
 rosrun pcl_ros pointcloud_to_pcd input:=/camera/depth/points _prefix:=/home/s/Masaüstü/deneme/veriler
 ----
 
+===PCD Dosyalarını Birleştirme
+
+* kendi hazırladığım eklemeyi alt alta manuel yaptığım kod derleniyo data oluşuyo ama ./cloud_viewer il çalışınca şu hata:
+	
+[source,]
+----
+[pcl::PCDReader::readHeader] HEIGHT (480) x WIDTH (640) != number of points (614400)
+----
+
+* kendi yazdığım ikinci kodda dosyaları cloud olarak alıp başka bir cloudta ekleyip daha sonra pcl kütüphanesindeki fonksiyon ile dosyaya yazdırdım aşağıdaki hata veriyo
+
+[source,]
+----
+terminate called after throwing an instance of 'pcl::IOException'
+what():  : [pcl::PCDWriter::writeASCII] Number of points different than width * height! İptal edildi (çekirdek döküldü)
+----
+ 
+
+* Tezden aldığım kodu ise düzenledim data oluşuyo ama octree ile açınca bilgisayar donuyo.
 
 
 
