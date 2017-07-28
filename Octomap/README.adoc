@@ -145,7 +145,7 @@ rosrun pcl_ros pointcloud_to_pcd input:=<topic> _prefix:=<çıktı dosya yolu>
 rosrun pcl_ros pointcloud_to_pcd input:=/camera/depth/points _prefix:=/home/s/Masaüstü/deneme/veriler
 ----
 
-===PCD Dosyalarını Birleştirme
+=== PCD Dosyalarını Birleştirme
 
 * kendi hazırladığım eklemeyi alt alta manuel yaptığım kod derleniyo data oluşuyo ama ./cloud_viewer il çalışınca şu hata:
 	
